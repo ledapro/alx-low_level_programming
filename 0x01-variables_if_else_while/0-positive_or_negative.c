@@ -1,16 +1,26 @@
 #include <stdlib.h>
-#include <unistd.h>
+#include <time.h>
+#include <stdio.h>
 
 /**
- * main - Entry point
+ * main - Prints a random number and states whether
+ * it is positive, negative, or zero.
  *
- * Return: Always 1 (Success)
+ * Return: Always 0.
  */
 int main(void)
 {
-	char *mgs = "and that piece of art is useful\" -Dora Korpar, 2015-10-19\n";
+	int n;
 
-	write(STDOUT_FILENO, mgs, 59);
+	srand(time(0));
+	n = rand() - RAND_MAX / 2;
 
-	return (1);
+	if (n > 0)
+		printf("%d is positive\n", n);
+	else if (n < 0)
+		printf("%d is negative\n", n);
+	else
+		printf("%d is zero\n", n);
+
+	return (0);
 }
